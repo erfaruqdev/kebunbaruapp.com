@@ -35,6 +35,8 @@ class RecapitulationController extends Controller
             $this->genderName = '';
         }
 
+        //GIT COBA
+
         config()->set('database.connections.mysql.strict', false);
         DB::reconnect();
         $results = [];
