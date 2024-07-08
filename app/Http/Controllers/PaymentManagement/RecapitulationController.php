@@ -36,6 +36,7 @@ class RecapitulationController extends Controller
         }
 
         //GIT COBA
+        //Coba lagi
 
         config()->set('database.connections.mysql.strict', false);
         DB::reconnect();
