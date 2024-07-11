@@ -95,6 +95,12 @@ Route::middleware('auth')->group(function (){
         });
     });
 
+    Route::group(['middleware' => ['role:admin-canteen']], function () {
+        Route::name('administration-management.')->group(function (){
+            Route::get('/administration-management/guardian', [\App\Http\Controllers\AdministrationManagement\ImageController::class, 'index'])->name('guardian');
+        });
+    });
+
     Route::name('print.')->group(function (){
         Route::get('/print/student/{id?}', [\App\Http\Controllers\RegisterManagement\StudentController::class, 'print'])->name('student');
         Route::get('/print/payment/{id?}', [\App\Http\Controllers\PaymentManagement\PaymentController::class, 'print'])->name('payment');

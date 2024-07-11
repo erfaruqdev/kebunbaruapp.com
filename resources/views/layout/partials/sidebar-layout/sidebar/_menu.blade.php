@@ -569,6 +569,36 @@
                 <!--end:Menu sub-->
             </div>
             @endhasanyrole
+
+            @hasanyrole('admin-canteen')
+            <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ request()->routeIs('canteen-management.*') ? 'here show' : '' }}">
+                <!--begin:Menu link-->
+                <span class="menu-link">
+					<span class="menu-icon">{!! getIcon('finance-calculator', 'fs-2') !!}</span>
+					<span class="fw-semibold menu-title">Kelola Kantin</span>
+					<span class="menu-arrow"></span>
+				</span>
+                <!--end:Menu link-->
+                <!--begin:Menu sub-->
+                <div class="menu-sub menu-sub-accordion">
+                    <!--begin:Menu item-->
+                    @can('create canteen management')
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link {{ request()->routeIs(['canteen-management.package', 'canteen-management.package.*']) ? 'active' : '' }}" href="{{ route('payment-management.account') }}">
+							<span class="menu-bullet">
+								<span class="bullet bullet-dot"></span>
+							</span>
+                                <span class="menu-title">Paket</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                    @endcan
+                    <!--end:Menu item-->
+                </div>
+                <!--end:Menu sub-->
+            </div>
+            @endhasanyrole
             <!--end:Menu item-->
 			<!--begin:Menu item-->
 			<div class="menu-item pt-5">
