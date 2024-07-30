@@ -61,7 +61,7 @@
     <div class="row">
         <img class="header" src="{{ asset('storage/assets/student-header.png') }}" alt="">
         <div class="divjudul">
-            <h3 class="judul"> <u>SURAT IZIN PULANG</u></h3>
+            <h3 class="judul"><u>SURAT IZIN PULANG</u></h3>
             <h4 class="noreg" style="font-weight: normal; font-style: italic">Nomor : {{ $petition->reg_number }}</h4>
         </div>
         <div class="divisi">
@@ -93,21 +93,24 @@
                     <td style="vertical-align: top; height: 30px">Alamat</td>
                     <td style="vertical-align: top;">:</td>
                     <td>
-                        {{ $petition->student->region->village }} {{ $petition->student->region->district }}, {{ str_replace(['Kabupaten', 'Kota '], '', $petition->student->region->city) }}
+                        {{ $petition->student->region->village }} {{ $petition->student->region->district }}
+                        , {{ str_replace(['Kabupaten', 'Kota '], '', $petition->student->region->city) }}
                     </td>
                 </tr>
                 <tr>
                     <td style="height: 30px">Pendidikan Diniyah</td>
                     <td>:</td>
                     <td>
-                        {{ $petition->registration->grade_of_diniyah }} - {{ $petition->registration->diniyah->shortname }}
+                        {{ $petition->registration->grade_of_diniyah }}
+                        - {{ $petition->registration->diniyah->shortname }}
                     </td>
                 </tr>
                 <tr>
                     <td style="height: 30px">Pendidikan Ammiyah</td>
                     <td>:</td>
                     <td>
-                        {{ $petition->registration->grade_of_formal }} - {{ $petition->registration->formal->shortname }}
+                        {{ $petition->registration->grade_of_formal }}
+                        - {{ $petition->registration->formal->shortname }}
                     </td>
                 </tr>
                 <tr style="font-weight: bold; height: 30px">
@@ -135,7 +138,7 @@
                     <td colspan="3" style="height: 10px;"></td>
                 </tr>
                 <tr style="text-align: center;">
-                    <td style="width: 30%;"> <i>{{ $config->gender ? 'Kabag. Taklimiyah' : 'Wali Kelas' }}</i> </td>
+                    <td style="width: 30%;"><i>{{ $config->gender ? 'Kabag. Taklimiyah' : 'Wali Kelas' }}</i></td>
                     <td style="width: 30%;">
                         <i>{{ $petition->is_health ? 'Kabag. Kesehatan' : 'Kabag. Kamtib' }}</i>
                     </td>
@@ -161,7 +164,7 @@
                     </td>
                 </tr>
                 <tr style="text-align: center;">
-                    <td style="width: 100%;" colspan="3"> <i>Pondok Pesantren Miftahul Ulum Kebun baru</i> </td>
+                    <td style="width: 100%;" colspan="3"><i>Pondok Pesantren Miftahul Ulum Kebun baru</i></td>
                 </tr>
                 <tr style="height: 80px; text-align: center;">
                     <td colspan="3" style="width: 100%; vertical-align: bottom;">
@@ -178,14 +181,20 @@
                 </div>
                 <div style="margin-top: 30px; font-style: italic;">
                     <ul style="list-style-type: circle">
-                        <li>Diterbitkan oleh {{ $petition->user->name }} pada {{ hijriToString(getHijri($petition->created_at->toDateString())) }} /
-                            {{ $petition->created_at->isoFormat('D MMMM Y') }} pukul {{ $petition->created_at->format('H:i') }} WIB
+                        <li>Diterbitkan oleh {{ $petition->user->name }}
+                            pada {{ hijriToString(getHijri($petition->created_at->toDateString())) }} /
+                            {{ $petition->created_at->isoFormat('D MMMM Y') }}
+                            pukul {{ $petition->created_at->format('H:i') }} WIB
                         </li>
                         <li>
-                            Proses izin harus selesai paling lambat {{ hijriToString(getHijri($petition->expired_at->toDateString())) }} /
-                            {{ $petition->expired_at->isoFormat('D MMMM Y') }} pukul {{ $petition->expired_at->format('H:i') }} WIB
+                            Proses izin harus selesai paling
+                            lambat {{ hijriToString(getHijri($petition->expired_at->toDateString())) }} /
+                            {{ $petition->expired_at->isoFormat('D MMMM Y') }}
+                            pukul {{ $petition->expired_at->format('H:i') }} WIB
                         </li>
-                        <li>Setelah proses selesai, Surat Izin ini harus ditukar dengan Salinan Surat Izin ke Kantor Sekretariat Pesantren pada saat jam pelayanan.</li>
+                        <li>Setelah proses selesai, Surat Izin ini harus ditukar dengan Salinan Surat Izin ke Kantor
+                            Sekretariat Pesantren pada saat jam pelayanan.
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -197,9 +206,9 @@
 
     <script>
         window.print()
-        setTimeout(function() {
+        window.onafterprint = function () {
             window.close()
-        }, 2000);
+        }
     </script>
 @else
     <div>Data tidak ditemukan</div>

@@ -202,7 +202,9 @@
                 <tr>
                     <td>Domisili</td>
                     <td>
-                        {{ $payment->registrationHasOne->domicile_status ? 'P2K' : 'LP2K' }}, {{ $payment->registrationHasOne->domicile }} - {{ $payment->registrationHasOne->domicile_number }}
+                        {{ $payment->registrationHasOne->domicile_status ? 'P2K' : 'LP2K' }}
+                        , {{ $payment->registrationHasOne->domicile }}
+                        - {{ $payment->registrationHasOne->domicile_number }}
                     </td>
                 </tr>
             </table>
@@ -218,7 +220,8 @@
                 <tr>
                     <td>Alamat</td>
                     <td>
-                        {{ $payment->registrationHasOne->student->region->village }}, {{ $payment->registrationHasOne->student->region->city }}
+                        {{ $payment->registrationHasOne->student->region->village }}
+                        , {{ $payment->registrationHasOne->student->region->city }}
                     </td>
                 </tr>
             </table>
@@ -244,7 +247,7 @@
                     <td class="text-center">2</td>
                     <td>
                         @if($payment->reduction_amount > 0)
-                        {{ \Illuminate\Support\Str::title($payment->reduction_notes) }}
+                            {{ \Illuminate\Support\Str::title($payment->reduction_notes) }}
                         @else
                             Pengurangan
                         @endif
@@ -259,7 +262,9 @@
                 <tr>
                     <td colspan="3">
                         <i>
-                            Terbilang : {{ \Illuminate\Support\Str::title(\Illuminate\Support\Number::spell($payment->getRawOriginal('amount'), 'id')) }} Rupiah
+                            Terbilang
+                            : {{ \Illuminate\Support\Str::title(\Illuminate\Support\Number::spell($payment->getRawOriginal('amount'), 'id')) }}
+                            Rupiah
                         </i>
                     </td>
                 </tr>
@@ -323,7 +328,9 @@
                 <tr>
                     <td>Domisili</td>
                     <td>
-                        {{ $payment->registrationHasOne->domicile_status ? 'P2K' : 'LP2K' }}, {{ $payment->registrationHasOne->domicile }} - {{ $payment->registrationHasOne->domicile_number }}
+                        {{ $payment->registrationHasOne->domicile_status ? 'P2K' : 'LP2K' }}
+                        , {{ $payment->registrationHasOne->domicile }}
+                        - {{ $payment->registrationHasOne->domicile_number }}
                     </td>
                 </tr>
             </table>
@@ -339,7 +346,8 @@
                 <tr>
                     <td>Alamat</td>
                     <td>
-                        {{ $payment->registrationHasOne->student->region->village }}, {{ $payment->registrationHasOne->student->region->city }}
+                        {{ $payment->registrationHasOne->student->region->village }}
+                        , {{ $payment->registrationHasOne->student->region->city }}
                     </td>
                 </tr>
             </table>
@@ -380,7 +388,9 @@
                 <tr>
                     <td colspan="3">
                         <i>
-                            Terbilang : {{ \Illuminate\Support\Str::title(\Illuminate\Support\Number::spell($payment->getRawOriginal('amount'), 'id')) }} Rupiah
+                            Terbilang
+                            : {{ \Illuminate\Support\Str::title(\Illuminate\Support\Number::spell($payment->getRawOriginal('amount'), 'id')) }}
+                            Rupiah
                         </i>
                     </td>
                 </tr>
@@ -414,9 +424,9 @@
 </div>
 <script>
     window.print()
-    setTimeout(function() {
+    window.onafterprint = function () {
         window.close()
-    }, 2000);
+    }
 </script>
 </body>
 

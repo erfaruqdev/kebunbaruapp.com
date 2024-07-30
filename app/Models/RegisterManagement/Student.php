@@ -7,18 +7,16 @@ use App\Models\Scopes\GenderScope;
 use App\Models\SettingManagement\Institution;
 use App\Models\SettingManagement\Period;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Student extends Model
 {
+    public $timestamps = true;
     protected $table = 'students';
     protected $primaryKey = 'id';
     protected $keyType = 'string';
-    public $timestamps = true;
-
     protected $fillable = [
         'id', 'registration_number', 'gender', 'kk', 'nik', 'period_id', 'name', 'place_of_birth', 'date_of_birth',
         'address', 'region_id', 'last_education', 'domicile_status', 'domicile', 'domicile_number', 'grade_of_diniyah',
@@ -62,15 +60,15 @@ class Student extends Model
     {
         $statuses = ['Berhenti', 'Aktif', 'Tugas', 'Pengurus'];
         return Attribute::make(
-            get: fn ($value) => $statuses[$value],
+            get: fn($value) => $statuses[$value],
         );
     }
 
     protected function gender(): Attribute
     {
-        $statuses = ['Perempuan', 'Laki-laki', 'Tugas'];
+        $statuses = ['Laki-laki', 'Perempuan'];
         return Attribute::make(
-            get: fn ($value) => $statuses[$value],
+            get: fn($value) => $statuses[$value],
         );
     }
 
@@ -78,7 +76,7 @@ class Student extends Model
     {
         $statuses = ['LP2K', 'P2K'];
         return Attribute::make(
-            get: fn ($value) => $statuses[$value],
+            get: fn($value) => $statuses[$value],
         );
     }
 
